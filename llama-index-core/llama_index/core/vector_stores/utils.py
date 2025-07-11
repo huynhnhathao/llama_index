@@ -54,7 +54,8 @@ def node_to_metadata_dict(
         del node_dict[text_resource_field]
 
     # remove embedding from node_dict
-    node_dict["embedding"] = None
+    if node_dict["embedding"]:
+        del node_dict["embedding"]
 
     # dump remainder of node_dict to json string
     metadata["_node_content"] = json.dumps(node_dict)
